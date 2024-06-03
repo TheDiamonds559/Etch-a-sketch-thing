@@ -6,10 +6,22 @@ let createGrid = width => {
             {
                 let t = document.createElement('div')
                 t.setAttribute('class', 'cell');
-                t.addEventListener('mouseenter', e => {e.target.style.backgroundColor = 'green'})
+                t.addEventListener('mouseenter', e => {e.target.style.backgroundColor = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`})
                 tt.appendChild(t);
             }
 
         document.querySelector('.container').appendChild(tt);
     }
 }
+
+let newGrid = () => {
+    let a = parseInt(prompt("Enter size of new grid:"))
+    if (a > 100 || a < 0) {
+        alert('Invalid');
+        return;
+    }
+    document.querySelector('.container').textContent = ''; //Remove all children!!!!
+    createGrid(a);
+}
+
+createGrid(16)
